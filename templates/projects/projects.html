@@ -17,23 +17,24 @@
         {% for project in projects %}
             <div class="project-card">
                 <a href="{{project.repository}}" target="_blank">
-                    <img src="{{project.image.url}}">
+                    <img src="{{ project.image.url }}" alt="{{ project.name }}">
                     <p>{{project.name}}</p>
-                    <p>My Coffee Blog Project is a simple web application 
-                        built in VS Code that showcases different coffee types, 
-                        brewing methods, and blog posts. It highlights core front-end 
-                        development skills using HTML, CSS, and JavaScript to create 
-                        an inviting and interactive layout for coffee enthusiasts. </p>
-                    <p>YYYY</p>
+                    <p>{{project.description}}</p>
+                    <p>{{project.year}}</p>
+                    <br></br>
+    
                     
-                    <div class="skills-container center">
+                
                     {% for skill in project.skills.all %}
-                        <label class="text-label">Skill</label>
+                        <label class="text-label">{{skill.name}}</label>
                     {% endfor %}
-                    </div>
+                    
+                </div>
+                    
                 </a>
-            </div>
             {% endfor %}
+            </div>
+            
 
 
         </div>

@@ -58,9 +58,9 @@
 
 .project-card {
     width: 25rem;
-    display: flex;
+    display:flex;
     flex-wrap: wrap;
-    padding: 0.5rem;
+    padding: 1rem;
     border-radius: 1%;
 }
 
@@ -191,3 +191,4 @@ a p:nth-child(4),  .experience-card p:nth-child(4)  {
 .contact-form button:hover {
   background-color: #e596ff;
 }
+
