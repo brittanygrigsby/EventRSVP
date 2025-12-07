@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block content %}
+<section class="center">
+    <h1>{{ event.name }}</h1>
+    <p>{{ event.date }} • {{ event.location }}</p>
+
+    {% if event.image %}
+        <img src="{{ event.image.url }}" alt="{{ event.name }}">
+    {% endif %}
+
+    <p>{{ event.description }}</p>
+
+    <hr>
+
+    <h2>Have a guest code?</h2>
+    <form method="get" action="{% url 'rsvp:rsvp_code' event.id %}">
+        <label for="code">Enter your guest code:</label>
+        <input type="text" id="code" name="code">
+        <button type="submit">Continue</button>
+    </form>
+</section>
+{% endblock %}

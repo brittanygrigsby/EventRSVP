@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Host Dashboard{% endblock %}
+
+{% block content %}
+<section class="center-column">
+    <h1>Welcome, {{ request.user.username }}</h1>
+
+    <p>This is your host dashboard.</p>
+
+    <div class="center-column">
+        <a href="{% url 'events:event_list' %}">
+            <button>View My Events</button>
+        </a>
+
+        <a href="#">
+            <button>Create New Event</button>
+        </a>
+
+        <a href="{% url 'logout' %}">
+            <button>Log Out</button>
+        </a>
+    </div>
+</section>
+{% endblock %}

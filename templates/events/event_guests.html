@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Guests - {{ event.name }}{% endblock %}
+
+{% block content %}
+<section class="center">
+    <h1>Guests for {{ event.name }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <h2>Add Guest</h2>
+        <input type="text" name="name" placeholder="Guest name" required>
+        <input type="email" name="email" placeholder="Guest email" required>
+        <button type="submit">Generate Code & Save</button>
+    </form>
+
+    <h2>Guest List</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Code</th>
+            <th>Attending</th>
+            <th>Meal</th>
+        </tr>
+        {% for guest in guests %}
+        <tr>
+            <td>{{ guest.name }}</td>
+            <td>{{ guest.email }}</td>
+            <td>{{ guest.code }}</td>
+            <td>
+                {% if guest.attending == True %}Yes{% elif guest.attending == False %}No{% else %}-{% endif %}
+            </td>
+            <td>{{ guest.get_meal_choice_display }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

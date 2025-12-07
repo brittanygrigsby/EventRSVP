@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+{% load static %}
+{% block title %}
+    Events
+{% endblock title%}
+
+{% block content %}
+<section class="events-section-center-column">
+
+    <h2>Events</h2>
+
+<div class="event-table">
+    {% for event in events %}
+        <div class="event-cell">
+            <img src="{{ event.image.url }}" alt="{{ event.name }}">
+            <h3>{{ event.name }}</h3>
+            <p>{{ event.date }}</p>
+        </div>
+    {% empty %}
+        <p>No events yet.</p>
+    {% endfor %}
+</div>
+
+
+</section>
+{% endblock content %}

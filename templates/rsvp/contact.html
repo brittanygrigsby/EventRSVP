@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="center">
+    <h1>Contact Us</h1>
+</div>
+<div>
+     <p>If you have questions about your event or RSVP, you can reach out submitting the details below.</p>
+</div>
+
+    <div class="contact-details">
+        <p><strong>Email:</strong> help@YayorNayRSVP.com</p>
+        <p><strong>Phone:</strong> (562) 123-4567</p>
+    </div>
+
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="name">Your Name</label><br>
+            <input type="text" id="name" name="name">
+        </div>
+
+        <div>
+            <label for="email">Your Email</label><br>
+            <input type="email" id="email" name="email">
+        </div>
+
+        <div>
+            <label for="message">Message</label><br>
+            <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+
+        <button type="submit">Send</button>
+    </form>
+
+{% endblock %}

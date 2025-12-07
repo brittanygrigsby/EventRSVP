@@ -18,11 +18,11 @@
     </title>
     
 </head>
+
 <body>
 <header class="center">
 
         <nav>
-            <!--Hamburger button-->
             <input type="checkbox" id="nav-check">
 
             <div class="nav-btn">
@@ -33,12 +33,21 @@
                 </label>
             </div>
 
-            <!--Links or Options of the Menu-->
+           
             <div class="nav-link center">
-                <a href="{% url 'about_me' %}">About me</a>
-                <a href="{% url 'projects' %}">Projects</a>
-                <a href="{% url 'experience' %}">Experience</a>
-                <a href="{% url 'contact' %}">Contact</a>
+                <h2>Yay or Nay RSVP</h2>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'rsvp:about' %}">About</a>
+                <a href="{% url 'events:event_list' %}">Events</a>  
+                <a href="{% url 'rsvp:contact' %}">Contact</a>    
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'host_dashboard' %}">Host Dashboard</a>
+                <a href="{% url 'logout' %}">Log Out</a>
+            {% else %}
+                <a href="{% url 'login' %}">Log In</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
             </div>
 
         </nav>
@@ -51,14 +60,14 @@
 
     <footer>
         <a href="">
-            <h2>Brittany Grigsby</h2>
+            <h2>Yay or Nay RSVP</h2>
         </a>
 
         <nav class="nav-footer center">
-            <a href="">About Me</a>
-            <a href="">Projects</a>
-            <a href="">Experience</a>
-            <a href="">Contact</a>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'rsvp:about' %}">About</a>
+                <a href="{% url 'events:event_list' %}">Events</a>  
+                <a href="{% url 'rsvp:contact' %}">Contact</a>   
         </nav>
 
     </footer>

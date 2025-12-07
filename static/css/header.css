@@ -14,10 +14,12 @@ nav {
 
 .nav-link {
     height: 100%;
+    font-weight: bold;
 }
 
 .nav-link a {
     color:white;
+    font-weight: bold;
     font-size: 1rem;
     text-transform: uppercase;
     margin: 2%;
@@ -28,7 +30,7 @@ nav {
     border-bottom: solid 2px white;
 }
 
-/*Hamburger button*/
+
 .nav-btn span {
     display: block;
     width: 30px;

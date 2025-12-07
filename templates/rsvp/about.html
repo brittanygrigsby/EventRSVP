@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<section class="about-page">
+
+    <h1>About Yay or Nay RSVP</h1>
+
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <img src="{% static 'img/Weddingimg.jpg' %}" alt="Create">
+            <h3>Create</h3>
+            <div class="service-desc">
+                Create beautiful event pages with photos, dates, and details tailored to your celebration.
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="{% static 'img/Weddingimg2.jpg' %}" alt="Track">
+            <h3>Keep Track</h3>
+            <div class="service-desc">
+                Keep track of Guests' RSVPs and keep all guest responses neatly organized.
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="{% static 'img/Weddingimg.jpg' %}" alt="Celebrate">
+            <h3>Celebrate</h3>
+            <div class="service-desc">
+                Enjoy the moment stress free as all RSVP details are handled behind the scenes.
+            </div>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

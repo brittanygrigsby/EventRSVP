@@ -29,15 +29,14 @@
     align-items: center;
 }
 
-/*Genera style: The style that is going to be applied to
- all the elemnts.*/
+
 html {
     background-color: var(--background-color);
     font-size: 14px;
 }
 
 * {
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
 }
@@ -46,10 +45,10 @@ a {
     text-decoration: none;
 }
 
-/*Text Style*/
+
 h1 {
     color: var(--neutral-color);
-    font-size: 2rem; 
+    font-size: 4rem; 
     text-transform: uppercase;
 }
 
@@ -59,6 +58,7 @@ h2 {
     font-weight: 400;
     letter-spacing: 0.06rem;
     font-size: 1.8rem;
+    font-weight: bold;
 }
 
 p {
