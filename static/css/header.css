@@ -21,7 +21,6 @@ nav {
     color:white;
     font-weight: bold;
     font-size: 1rem;
-    text-transform: uppercase;
     margin: 2%;
     padding: 1% 2%;
 }
@@ -41,4 +40,26 @@ nav {
 
 #nav-check, .nav-btn {
     display: none;
+}
+
+.logout-form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.logout-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 2%;
+    padding: 1% 2%;
+}
+
+.logout-link:hover {
+    border-bottom: solid 2px white;
 }

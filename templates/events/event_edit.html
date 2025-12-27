@@ -1,5 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Event Detail{% endblock %}
+{% block title %}Edit {{ event.name }}{% endblock %}
+
 {% block content %}
-<h1>{{ event.name }}</h1>
+<section class="event-detail-simple">
+    <h1>Edit Event</h1>
+
+    <form method="post" enctype="multipart/form-data" class="guest-code-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <div style="margin-top: 1rem;">
+        <a href="{% url 'events:event_detail' event.id %}">
+            <button type="button">Cancel</button>
+        </a>
+    </div>
+</section>
 {% endblock %}

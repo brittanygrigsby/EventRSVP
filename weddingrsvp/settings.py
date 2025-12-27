@@ -48,12 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'events',
     'rsvp',
-    'accounts'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -127,31 +127,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR/'staticfiles'
 STATICFILES_DIRS = [ BASE_DIR / 'static']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
 #login and log out
-LOGIN_REDIRECT_URL = 'event_list'  
-LOGOUT_REDIRECT_URL = 'home'       
-LOGIN_URL = 'login' 
-
-# Email 
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_SSL = False
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ("brittanysugrigsby@gmail.com")
-EMAIL_HOST_PASSWORD = ("prsi rbsi hunp uytq")
-
-
 LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "host_dashboard"
-LOGOUT_REDIRECT_URL = "login"
+LOGIN_REDIRECT_URL = "events:host_dashboard"
+LOGOUT_REDIRECT_URL = "home"
+
+
+# Email
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

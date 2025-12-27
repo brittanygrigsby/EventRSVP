@@ -2,37 +2,94 @@
 {% block title %}Guests - {{ event.name }}{% endblock %}
 
 {% block content %}
-<section class="center">
+
+<section class="center-column host-dashboard">
     <h1>Guests for {{ event.name }}</h1>
 
-    <form method="post">
-        {% csrf_token %}
+    <section class="center-column add-guest-form">
         <h2>Add Guest</h2>
-        <input type="text" name="name" placeholder="Guest name" required>
-        <input type="email" name="email" placeholder="Guest email" required>
-        <button type="submit">Generate Code & Save</button>
-    </form>
 
-    <h2>Guest List</h2>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Code</th>
-            <th>Attending</th>
-            <th>Meal</th>
-        </tr>
-        {% for guest in guests %}
-        <tr>
-            <td>{{ guest.name }}</td>
-            <td>{{ guest.email }}</td>
-            <td>{{ guest.code }}</td>
-            <td>
-                {% if guest.attending == True %}Yes{% elif guest.attending == False %}No{% else %}-{% endif %}
-            </td>
-            <td>{{ guest.get_meal_choice_display }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+        {% if form.non_field_errors %}
+          <p class="form-error">{{ form.non_field_errors }}</p>
+        {% endif %}
+
+        <form method="post" class="guest-invite-form">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="form-field {% if form.first_name.errors %}field-error{% endif %}">
+                    <label>First name</label>
+                    {{ form.first_name }}
+                    {% for err in form.first_name.errors %}
+                      <small class="field-error-text">{{ err }}</small>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field {% if form.last_name.errors %}field-error{% endif %}">
+                    <label>Last name</label>
+                    {{ form.last_name }}
+                    {% for err in form.last_name.errors %}
+                      <small class="field-error-text">{{ err }}</small>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-field {% if form.email.errors %}field-error{% endif %}">
+                <label>Email</label>
+                {{ form.email }}
+                {% for err in form.email.errors %}
+                  <small class="field-error-text">{{ err }}</small>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Generate Code & Send Email</button>
+        </form>
+    </section>
+
+ <section class="guest-table-wrapper">
+  <h2>Guest List</h2>
+
+  <table class="guest-table">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Code</th>
+      <th>Attending</th>
+      <th>Meal</th>
+      <th>Plus One</th>
+      <th>Plus One-Meal</th>
+      <th>Actions</th> 
+    </tr>
+
+    {% for guest in guests %}
+      <tr>
+        <td>{{ guest.name }}</td>
+        <td>{{ guest.email }}</td>
+        <td>{{ guest.code }}</td>
+        <td>
+          {% if guest.attending == True %}Yay{% elif guest.attending == False %}Nay{% else %}-{% endif %}
+        </td>
+        <td>{{ guest.get_meal_choice_display }}</td>
+        <td>{% if guest.plus_one %}Yes{% else %}No{% endif %}</td>
+        <td>{{ guest.get_plus_one_meal_choice_display|default:"-" }}</td>
+
+        <td>
+          {% if user.is_authenticated %}
+            <form method="post"
+                  action="{% url 'events:guest_delete' event.id guest.id %}"
+                  style="display:inline;">
+              {% csrf_token %}
+              <button type="submit"
+                      onclick="return confirm('Delete this guest? You can re-invite them later.');">
+                Delete
+              </button>
+            </form>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
 </section>
+
+
 {% endblock %}

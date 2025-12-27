@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Create Account{% endblock %}
+
+{% block content %}
+<section class="event-detail-simple">
+  <h1>Create Host Account</h1>
+
+  <div class="rsvp-box">
+
+    {% if form.errors %}
+      <p class="guest-error">
+        Please correct the errors below and try again.
+      </p>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit">Create Account</button>
+    </form>
+
+    <p style="margin-top:1rem; text-align:center;">
+      Already have an account?
+      <a href="{% url 'login' %}">Log in</a>
+    </p>
+
+  </div>
+</section>
+{% endblock %}

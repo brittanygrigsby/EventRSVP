@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<section class="event-detail-simple">
+  <h1>Log In</h1>
+
+  <div class="rsvp-box">
+
+    {% if form.errors %}
+      <p class="guest-error">
+        Invalid username or password. Please try again.
+      </p>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit">Log In</button>
+    </form>
+
+    <p style="margin-top:1rem; text-align:center;">
+      Don’t have an account?
+      <a href="{% url 'events:signup' %}">Create one</a>
+    </p>
+
+  </div>
+</section>
+{% endblock %}

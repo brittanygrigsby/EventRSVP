@@ -2,23 +2,111 @@
 {% block title %}{{ event.name }}{% endblock %}
 
 {% block content %}
-<section class="center">
+<section class="event-detail-simple">
     <h1>{{ event.name }}</h1>
-    <p>{{ event.date }} • {{ event.location }}</p>
+    <p class="event-date">{{ event.date }}</p>
 
     {% if event.image %}
-        <img src="{{ event.image.url }}" alt="{{ event.name }}">
+        <img src="{{ event.image.url }}" alt="{{ event.name }}" class="event-detail-img">
     {% endif %}
+    {% if event.registry_url %}
+  <div class="registry-box">
+    <a class="registry-link" href="{{ event.registry_url }}" target="_blank" rel="noopener">
+      View Registry
+    </a>
+  </div>
+{% endif %}
 
-    <p>{{ event.description }}</p>
+    <p class="event-description">{{ event.description }}</p>
 
-    <hr>
+ <hr>
+{% if error %}
+  <p style="color:#b00020; background:#fdeaea; border:1px solid #f5c2c7; padding:10px; border-radius:6px; margin: 1rem 0;">
+    {{ error }}
+  </p>
+{% endif %}
 
+
+{% if not guest %}
     <h2>Have a guest code?</h2>
-    <form method="get" action="{% url 'rsvp:rsvp_code' event.id %}">
+    <form method="post" class="guest-code-form">
+        {% csrf_token %}
+        <input type="hidden" name="guest_code_submit" value="1">
         <label for="code">Enter your guest code:</label>
-        <input type="text" id="code" name="code">
+        <input type="text" id="code" name="code" required>
         <button type="submit">Continue</button>
     </form>
+{% else %}
+    <h2>RSVP for {{ guest.name }}</h2>
+
+    <div class="rsvp-box">
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="rsvp_submit" value="1">
+            <input type="hidden" name="guest_id" value="{{ guest.id }}">
+
+            {{ rsvp_form.as_p }}
+
+            <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const plusOne = document.querySelector('input[name="plus_one"]');
+  const plusOneMeal = document.querySelector('select[name="plus_one_meal_choice"]');
+
+  if (!plusOne || !plusOneMeal) return;
+
+  const plusOneMealRow = plusOneMeal.closest("p");
+
+  function togglePlusOneMeal() {
+    const show = plusOne.checked;
+
+    if (plusOneMealRow) {
+      plusOneMealRow.style.display = show ? "block" : "none";
+    } else {
+      plusOneMeal.style.display = show ? "block" : "none";
+    }
+
+    // If unchecked, plus-one meal choice cleared
+    if (!show) plusOneMeal.value = "";
+  }
+
+  togglePlusOneMeal();
+  plusOne.addEventListener("change", togglePlusOneMeal);
+});
+</script>
+
+
+            <button type="submit">Submit RSVP</button>
+        </form>
+    </div>
+{% endif %}
+
+
+
+
+    {# HOST ACTIONS that are visible only when logged in #}
+    {% if user.is_authenticated %}
+        <hr style="margin-top: 2rem;">
+
+        <form method="post"
+              action="{% url 'events:event_delete' event.id %}"
+              style="margin-top: 1rem;">
+            {% csrf_token %}
+            <button type="submit"
+                    onclick="return confirm('Are you sure you want to delete this event?');">
+                Delete Event
+            </button>
+        </form>
+
+        <div style="margin-top: 1rem;">
+            <a href="{% url 'events:event_guests' event.id %}">
+             <button type="button">Manage Guests</button>
+            </a>
+        </div>
+        <div style="margin-top: 1rem;">
+            <a href="{% url 'events:event_edit' event.id %}">
+                <button type="button">Edit Event</button>
+            </a>
+        </div>
+    {% endif %}
 </section>
 {% endblock %}

@@ -30,18 +30,6 @@
     margin-top: 2rem;
 }
 
-.event-card {
-    width: 25rem;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1rem;
-    border-radius: 1%;
-}
-
-.event-card img {
-    width: 100%;
-    border-radius: 1%;
-}
 
 .event-card:hover {
     opacity: 0.5;

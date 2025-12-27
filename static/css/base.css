@@ -1,21 +1,17 @@
-/*Variables*/
+/* Variables */
 :root {
-    --primary-color: #dda0cb;
- 
-    --secondary-color: #dca5de;
-  
-    --neutral-color: #333333;
-
+    --primary-color: #060606;
+    --secondary-color: #020102;
+    --neutral-color: #030000;
     --background-color: #F5F8FF;
+    --surface-color: #8ebcef;
 
-    --surface-color: #91adf8;
-
-  
+ 
+    --script-font: 'Great Vibes', cursive;
     --sans-font: 'DM Sans', sans-serif;
-
-
 }
 
+/* Layout of pages */
 .center {
     display: flex;
     justify-content: center;
@@ -29,51 +25,213 @@
     align-items: center;
 }
 
-
+/* Global defaults */
 html {
     background-color: var(--background-color);
     font-size: 14px;
 }
 
 * {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Default font*/
+body,
+p,
+label,
+input,
+button,
+a,
+li {
+    font-family: var(--sans-font);
+}
+
+
+/* Links */
 a {
     text-decoration: none;
+    color: inherit;
 }
 
+/* HEADINGS */
 
+/* H1 – Elegant script (page titles, event names) */
 h1 {
-    color: var(--neutral-color);
-    font-size: 4rem; 
-    text-transform: uppercase;
+    font-family: var(--script-font);
+    color: var(--primary-color);
+    font-size: 3rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-transform: none; /* remove uppercase to keep it elegant */
 }
 
+/* H2 – Section titles (clean + playful) */
 h2 {
+    font-family: var(--script-font);
     color: var(--primary-color);
-    font-family: var(--lobster-font);
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 0.06rem;
     font-size: 1.8rem;
-    font-weight: bold;
 }
 
+/* H3 – Smaller headings (cards, labels) */
+h3 {
+    font-family: var(--sans-font);
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+/* Paragraphs */
 p {
-    color: var(--neutral-color);
+    color: var(--primary-color);
     font-size: 1.1rem;
 }
 
+/* Label-style pill text */
 .text-label { 
-    color:white;
+    color: rgba(5, 4, 4, 0.869);
     background-color: var(--secondary-color);
     font-size: 1.1rem;
     text-transform: uppercase;
     font-weight: 600;
     padding: 0.8rem 1.5rem;
-    cursor:initial;
+    cursor: initial;
+}
+
+.host-events-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    padding: 0;
+    width: 100%;
+    max-width: 700px;
+}
+
+.host-event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.host-event-actions button {
+    margin-left: 0.3rem;
 }
 
 
+
+/* ================================
+   HOST DASHBOARD – GUEST MANAGEMENT
+================================ */
+
+.host-dashboard {
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 1rem;
+}
+
+/* ---------- ADD GUEST FORM ---------- */
+
+.add-guest-form {
+    background-color: ivory;
+    border: 4px solid #333;
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-bottom: 3.5rem;
+    font-size: 1.15rem;
+}
+
+.add-guest-form h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.75rem;
+}
+
+.add-guest-form label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.add-guest-form input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+}
+
+.add-guest-form button {
+    margin-top: 2rem;
+    padding: 0.85rem 1.75rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Preserve your existing form layout */
+.add-guest-form .form-row {
+    display: flex;
+    gap: 2rem;
+}
+
+.add-guest-form .form-field {
+    flex: 1;
+}
+
+/* ---------- GUEST TABLE ---------- */
+
+.guest-table-wrapper {
+    background-color: ivory;
+    border: 4px solid #333;
+    border-radius: 12px;
+    padding: 2.5rem;
+}
+
+.guest-table-wrapper h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Wider, spaced rows */
+.guest-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 14px;
+    font-size: 1.1rem;
+}
+
+/* Table header */
+.guest-table th {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 3px solid #333;
+    font-weight: 700;
+}
+
+/* Table cells */
+.guest-table td {
+    padding: 1rem;
+    background-color: #fffef4;
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Row box effect */
+.guest-table tr td:first-child {
+    border-left: 2px solid #ddd;
+}
+
+.guest-table tr td:last-child {
+    border-right: 2px solid #ddd;
+}
+
+/* ---------- OPTIONAL QUALITY TOUCH ---------- */
+
+.add-guest-form,
+.guest-table-wrapper {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}

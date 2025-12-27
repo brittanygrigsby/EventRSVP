@@ -1,5 +1,74 @@
 {% extends "base.html" %}
-{% block title %}Event Detail{% endblock %}
+{% load static %}
+
+{% block title %}Create Event{% endblock %}
+
 {% block content %}
-<h1>{{ event.name }}</h1>
+<section class="form-page event-create-page">
+
+    <h1 class="page-title">Create a New Event</h1>
+    <p class="page-subtitle">
+        Add your event details below. Your guests will use their special code to RSVP to this event.
+    </p>
+
+    <div class="form-card">
+        <form method="post" enctype="multipart/form-data" class="event-form">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <label for="{{ form.name.id_for_label }}">Event Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="field-error">{{ form.name.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-row form-row-inline">
+                <div class="form-group-half">
+                    <label for="{{ form.date.id_for_label }}">Date</label>
+                    {{ form.date }}
+                    {% if form.date.errors %}
+                        <div class="field-error">{{ form.date.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group-half">
+                    <label for="{{ form.time.id_for_label }}">Time</label>
+                    {{ form.time }}
+                    {% if form.time.errors %}
+                        <div class="field-error">{{ form.time.errors.0 }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <label for="{{ form.description.id_for_label }}">Description</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <div class="field-error">{{ form.description.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-row">
+                <label for="{{ form.image.id_for_label }}">Event Image (optional)</label>
+                {{ form.image }}
+                {% if form.image.errors %}
+                    <div class="field-error">{{ form.image.errors.0 }}</div>
+                {% endif %}
+            </div>
+       
+            <div class="form-row">
+                <label for="{{ form.registry_url.id_for_label }}">Registry Link (optional)</label>
+                {{ form.registry_url }}
+                {% if form.registry_url.errors %}
+                <div class="field-error">{{ form.registry_url.errors.0 }}</div>
+                {% endif %}
+                <small class="help-text">Example:https://www.insert webpage link here</small>
+                </div>
+            <button type="submit" class="btn primary-btn">Save Event</button>
+        </form>
+    </div>
+
+</section>
 {% endblock %}

@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import guest
+from .models import Guest
 
-@admin.register(guest)
+@admin.register(Guest)
 class GuestAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "event", "code", "attending", "meal_choice")
     list_filter = ("event", "attending", "meal_choice")

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}RSVP Confirmed{% endblock %}
+
+{% block content %}
+<section class="event-detail-simple">
+    <h1>RSVP Confirmed 🎉</h1>
+    <p class="event-date">Thank you for responding!</p>
+
+    <div class="rsvp-box">
+        <p>We’ve received your RSVP for:</p>
+        <h2>{{ event.name }}</h2>
+        <p>{{ event.date }}</p>
+
+        <div style="margin-top: 1rem;">
+            <a href="{% url 'events:event_detail' event.id %}">
+                <button type="button">Back to Event</button>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -8,15 +8,10 @@ from rsvp.views import rsvp_home , home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    
-
-    # Wedding RSVP Page
     path('weddingrsvp/', rsvp_home, name='weddingrsvp'),
-    
-    # Apps
     path('events/', include('events.urls')),
     path('rsvp/', include('rsvp.urls')),
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -89,3 +89,588 @@
     border: 3px solid #ddd; 
 }
 
+/* Grid container for events */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 2rem; /* space between cards */
+    margin-top: 2rem;
+}
+
+/* Individual event cards */
+.event-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+.event-card .event-img {
+    width: 40%;       /* 👈 40% of the card width */
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem auto; /* center and add space below */
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.guest-error {
+    color: #b00020;              /* deep red */
+    background-color: #fdeaea;   /* soft red background */
+    border: 1px solid #f5c2c7;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* 2 per row on tablets */
+@media (max-width: 900px) {
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 1 per row on mobile */
+@media (max-width: 600px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* About Page – 3 circles in a row */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 across */
+    gap: 2rem;
+    justify-items: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.service-card {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Circular images at 40% width */
+.service-card img {
+    width: 40%;            /* 40% of the card width */
+    aspect-ratio: 1 / 1;   /* keeps perfect circle */
+    border-radius: 50%;    /* makes circle */
+    object-fit: cover;     /* crop nicely */
+    border: 3px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+/* Title under circle */
+.service-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+}
+
+/* Small text description */
+.service-desc {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* 1 item per row */
+    }
+}
+
+/* EVENT DETAIL PAGE */
+
+.event-detail-simple {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.event-detail-simple h1 {
+    margin-bottom: 0.5rem;
+}
+
+.event-date {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+}
+
+.event-detail-img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1.5rem auto;
+    display: block;
+}
+
+.event-description {
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.event-detail-simple hr {
+    margin: 2.5rem 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+
+
+/* Guest Code Form */
+
+.guest-code-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.guest-code-form input {
+    padding: 0.5rem 0.75rem;
+    width: 250px;
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.guest-code-form button {
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+}
+
+.guest-code-form button:hover {
+    opacity: 0.85;
+}
+
+/* Mobile-friendly */
+@media (max-width: 600px) {
+    .event-detail-img {
+        max-width: 70%;
+    }
+}
+
+.event-description {
+    line-height: 1.6;
+    margin: 2rem auto;
+    padding: 1.25rem 1.5rem;
+    max-width: 600px;
+
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Event description + RSVP form shared styling */
+.event-description,
+.rsvp-box {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-width: 600px;
+    margin: 1.5rem auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* RSVP form fields */
+.rsvp-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.rsvp-box label {
+    font-weight: 600;
+}
+
+.rsvp-box input,
+.rsvp-box select {
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.rsvp-box button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.guest-invite-form {
+  margin: 1rem auto 2rem;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  outline: none;
+}
+
+/* RED highlight when field has errors */
+.field-error input {
+  border: 2px solid #d93025;
+  background: #fff6f6;
+}
+
+/* Error text under the input */
+.field-error-text {
+  display: block;
+  margin-top: 0.35rem;
+  color: #d93025;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* HOST DASHBOARD LAYOUT */
+.host-dashboard-page {
+  min-height: calc(100vh - 140px); /* gives room under sticky header/footer */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+}
+
+.host-dashboard-card {
+  width: 100%;
+  max-width: 900px;          /* makes it “larger” */
+  padding: 3rem 2rem;
+  text-align: center;
+
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.host-dashboard-title {
+  margin-bottom: 1.25rem;     /* space under header */
+}
+
+.host-dashboard-welcome {
+  margin-top: 0.5rem;
+  margin-bottom: 2.25rem;     /* space before buttons */
+  font-size: 1.15rem;
+  opacity: 0.9;
+}
+
+/* Buttons in centered column */
+.host-dashboard-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* “2.5 inches wide” ≈ 240px */
+.host-btn-link {
+  width: 240px;
+  max-width: 90vw; /* responsive on small screens */
+}
+
+.host-btn {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: var(--sans-font);
+}
+
+.host-btn-primary {
+  background-color: var(--surface-color);
+  color: #fff;
+}
+
+.host-btn-secondary {
+  background-color: #fff;
+  color: var(--primary-color);
+  border: 2px solid var(--surface-color);
+}
+
+.host-btn-danger {
+  background-color: #b00020;
+  color: #fff;
+}
+
+.host-btn:hover {
+  opacity: 0.9;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .host-dashboard-card {
+    padding: 2rem 1.25rem;
+  }
+}
+
+/* CONTACT PAGE */
+
+.contact-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.contact-details {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+/* Form Card */
+.contact-card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Form fields */
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.contact-field label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.contact-field input,
+.contact-field textarea {
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Button */
+.contact-btn {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+  background-color: var(--surface-color);
+  color: #fff;
+}
+
+.contact-btn:hover {
+  opacity: 0.9;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-card {
+    padding: 1.5rem;
+  }
+}
+
+/* SHARED FORM PAGE STYLES (Create Event, etc.) */
+
+.form-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+}
+
+/* Card container */
+.form-card {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 2.25rem;
+
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+  text-align: left; /* form fields align nicely */
+}
+
+/* Form layout */
+.event-form .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.event-form label {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.event-form input,
+.event-form textarea,
+.event-form select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Inline row (date + time) */
+.form-row-inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Help text under a field */
+.help-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+  opacity: 0.75;
+}
+
+/* Error message */
+.field-error {
+  color: #b00020;
+  background: #fdeaea;
+  border: 1px solid #f5c2c7;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.btn.primary-btn {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1.05rem;
+
+  background-color: var(--surface-color);
+  color: #fff;
+}
+
+.btn.primary-btn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 700px) {
+  .form-card {
+    padding: 1.5rem;
+  }
+  .form-row-inline {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* REGISTRY BOX */
+.registry-box {
+  text-align: center;
+  margin: 0.75rem auto 1.25rem;
+}
+
+.registry-link {
+  display: inline-block;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+
+  background: #fff;
+  border: 2px solid var(--surface-color);
+  color: var(--surface-color);
+}
+
+.registry-link:hover {
+  opacity: 0.9;
+}
