@@ -6,17 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0002_rename_year_event_date'),
+        ("events", "0002_rename_year_event_date"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='event',
-            name='repository',
+            model_name="event",
+            name="repository",
         ),
-        migrations.AlterField(
-            model_name='event',
-            name='date',
-            field=models.DateField(),
+
+        # Convert the existing integer "date" (year) into a real date on Postgres.
+        migrations.RunSQL(
+            sql="""
+                ALTER TABLE events_event
+                ALTER COLUMN date TYPE date
+                USING make_date(date, 1, 1);
+            """,
+            reverse_sql="""
+                ALTER TABLE events_event
+                ALTER COLUMN date TYPE integer
+                USING EXTRACT(YEAR FROM date)::integer;
+            """,
+            state_operations=[
+                migrations.AlterField(
+                    model_name="event",
+                    name="date",
+                    field=models.DateField(),
+                ),
+            ],
         ),
     ]
