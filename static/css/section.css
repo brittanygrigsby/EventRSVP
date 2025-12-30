@@ -89,15 +89,15 @@
     border: 3px solid #ddd; 
 }
 
-/* Grid container for events */
+
 .events-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 per row */
-    gap: 2rem; /* space between cards */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2rem; 
     margin-top: 2rem;
 }
 
-/* Individual event cards */
+
 .event-card {
     background-color: #ffffff;
     border-radius: 12px;
@@ -106,17 +106,17 @@
     text-align: center;
 }
 .event-card .event-img {
-    width: 40%;       /* 👈 40% of the card width */
+    width: 40%;   
     height: auto;
     display: block;
-    margin: 0 auto 1rem auto; /* center and add space below */
+    margin: 0 auto 1rem auto; 
     border-radius: 8px;
     object-fit: cover;
 }
 
 .guest-error {
-    color: #b00020;              /* deep red */
-    background-color: #fdeaea;   /* soft red background */
+    color: #b00020;           
+    background-color: #fdeaea;  
     border: 1px solid #f5c2c7;
     padding: 0.75rem 1rem;
     border-radius: 6px;
@@ -125,21 +125,21 @@
     font-weight: 500;
 }
 
-/* 2 per row on tablets */
+
 @media (max-width: 900px) {
     .events-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* 1 per row on mobile */
+
 @media (max-width: 600px) {
     .events-grid {
         grid-template-columns: 1fr;
     }
 }
 
-/* About Page – 3 circles in a row */
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 across */
@@ -154,23 +154,23 @@
     padding: 1rem;
 }
 
-/* Circular images at 40% width */
+
 .service-card img {
-    width: 40%;            /* 40% of the card width */
-    aspect-ratio: 1 / 1;   /* keeps perfect circle */
-    border-radius: 50%;    /* makes circle */
-    object-fit: cover;     /* crop nicely */
+    width: 40%;           
+    aspect-ratio: 1 / 1;  
+    border-radius: 50%;   
+    object-fit: cover;     
     border: 3px solid #ddd;
     margin-bottom: 1rem;
 }
 
-/* Title under circle */
+
 .service-card h3 {
     margin: 0.5rem 0;
     font-size: 1.25rem;
 }
 
-/* Small text description */
+
 .service-desc {
     font-size: 0.95rem;
     opacity: 0.8;
@@ -178,16 +178,16 @@
     margin: 0 auto;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 900px) {
     .services-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (max-width: 600px) {
     .services-grid {
-        grid-template-columns: 1fr; /* 1 item per row */
+        grid-template-columns: 1fr; 
     }
 }
 
@@ -231,8 +231,6 @@
 
 
 
-/* Guest Code Form */
-
 .guest-code-form {
     display: flex;
     flex-direction: column;
@@ -262,7 +260,7 @@
     opacity: 0.85;
 }
 
-/* Mobile-friendly */
+
 @media (max-width: 600px) {
     .event-detail-img {
         max-width: 70%;
@@ -283,7 +281,7 @@
     text-align: left;
 }
 
-/* Event description + RSVP form shared styling */
+
 .event-description,
 .rsvp-box {
     background-color: #ffffff;
@@ -295,7 +293,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
-/* RSVP form fields */
+
 .rsvp-box form {
     display: flex;
     flex-direction: column;
@@ -349,13 +347,13 @@
   outline: none;
 }
 
-/* RED highlight when field has errors */
+
 .field-error input {
   border: 2px solid #d93025;
   background: #fff6f6;
 }
 
-/* Error text under the input */
+
 .field-error-text {
   display: block;
   margin-top: 0.35rem;
@@ -369,9 +367,9 @@
   }
 }
 
-/* HOST DASHBOARD LAYOUT */
+
 .host-dashboard-page {
-  min-height: calc(100vh - 140px); /* gives room under sticky header/footer */
+  min-height: calc(100vh - 140px); 
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -380,7 +378,7 @@
 
 .host-dashboard-card {
   width: 100%;
-  max-width: 900px;          /* makes it “larger” */
+  max-width: 900px;      
   padding: 3rem 2rem;
   text-align: center;
 
@@ -391,17 +389,17 @@
 }
 
 .host-dashboard-title {
-  margin-bottom: 1.25rem;     /* space under header */
+  margin-bottom: 1.25rem;     
 }
 
 .host-dashboard-welcome {
   margin-top: 0.5rem;
-  margin-bottom: 2.25rem;     /* space before buttons */
+  margin-bottom: 2.25rem;    
   font-size: 1.15rem;
   opacity: 0.9;
 }
 
-/* Buttons in centered column */
+
 .host-dashboard-actions {
   display: flex;
   flex-direction: column;
@@ -409,10 +407,10 @@
   gap: 1rem;
 }
 
-/* “2.5 inches wide” ≈ 240px */
+
 .host-btn-link {
   width: 240px;
-  max-width: 90vw; /* responsive on small screens */
+  max-width: 90vw; 
 }
 
 .host-btn {
@@ -445,7 +443,7 @@
   opacity: 0.9;
 }
 
-/* Mobile tweaks */
+
 @media (max-width: 600px) {
   .host-dashboard-card {
     padding: 2rem 1.25rem;
@@ -477,7 +475,7 @@
   font-size: 1rem;
 }
 
-/* Form Card */
+
 .contact-card {
   max-width: 520px;
   margin: 0 auto;
@@ -489,7 +487,7 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-/* Form fields */
+
 .contact-field {
   display: flex;
   flex-direction: column;
@@ -511,7 +509,7 @@
   font-size: 1rem;
 }
 
-/* Button */
+
 .contact-btn {
   margin-top: 1rem;
   width: 100%;
@@ -531,7 +529,6 @@
   opacity: 0.9;
 }
 
-/* Mobile tweaks */
 @media (max-width: 600px) {
   .contact-title {
     font-size: 2rem;
@@ -541,8 +538,6 @@
     padding: 1.5rem;
   }
 }
-
-/* SHARED FORM PAGE STYLES (Create Event, etc.) */
 
 .form-page {
   max-width: 900px;
@@ -563,7 +558,7 @@
   margin: 0 auto 2rem;
 }
 
-/* Card container */
+
 .form-card {
   max-width: 650px;
   margin: 0 auto;
@@ -574,10 +569,10 @@
   border-radius: 14px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 
-  text-align: left; /* form fields align nicely */
+  text-align: left; 
 }
 
-/* Form layout */
+
 .event-form .form-row {
   display: flex;
   flex-direction: column;
@@ -600,7 +595,6 @@
   font-size: 1rem;
 }
 
-/* Inline row (date + time) */
 .form-row-inline {
   display: grid;
   grid-template-columns: 1fr 1fr;

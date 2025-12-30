@@ -1,4 +1,4 @@
-/* Variables */
+
 :root {
     --primary-color: #060606;
     --secondary-color: #020102;
@@ -11,7 +11,7 @@
     --sans-font: 'DM Sans', sans-serif;
 }
 
-/* Layout of pages */
+
 .center {
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@
     align-items: center;
 }
 
-/* Global defaults */
+
 html {
     background-color: var(--background-color);
     font-size: 14px;
@@ -37,7 +37,7 @@ html {
     box-sizing: border-box;
 }
 
-/* Default font*/
+
 body,
 p,
 label,
@@ -48,26 +48,22 @@ li {
     font-family: var(--sans-font);
 }
 
-
-/* Links */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* HEADINGS */
 
-/* H1 – Elegant script (page titles, event names) */
 h1 {
     font-family: var(--script-font);
     color: var(--primary-color);
     font-size: 3rem;
     font-weight: normal;
     letter-spacing: 1px;
-    text-transform: none; /* remove uppercase to keep it elegant */
+    text-transform: none; 
 }
 
-/* H2 – Section titles (clean + playful) */
+
 h2 {
     font-family: var(--script-font);
     color: var(--primary-color);
@@ -76,7 +72,7 @@ h2 {
     font-size: 1.8rem;
 }
 
-/* H3 – Smaller headings (cards, labels) */
+
 h3 {
     font-family: var(--sans-font);
     color: var(--primary-color);
@@ -84,13 +80,11 @@ h3 {
     font-size: 1.3rem;
 }
 
-/* Paragraphs */
 p {
     color: var(--primary-color);
     font-size: 1.1rem;
 }
 
-/* Label-style pill text */
 .text-label { 
     color: rgba(5, 4, 4, 0.869);
     background-color: var(--secondary-color);
@@ -124,19 +118,13 @@ p {
     margin-left: 0.3rem;
 }
 
-
-
-/* ================================
-   HOST DASHBOARD – GUEST MANAGEMENT
-================================ */
-
 .host-dashboard {
     max-width: 1200px;
     margin: 2.5rem auto;
     padding: 1rem;
 }
 
-/* ---------- ADD GUEST FORM ---------- */
+
 
 .add-guest-form {
     background-color: ivory;
@@ -172,7 +160,7 @@ p {
     cursor: pointer;
 }
 
-/* Preserve your existing form layout */
+
 .add-guest-form .form-row {
     display: flex;
     gap: 2rem;
@@ -182,7 +170,7 @@ p {
     flex: 1;
 }
 
-/* ---------- GUEST TABLE ---------- */
+/* GUEST TABLE  */
 
 .guest-table-wrapper {
     background-color: ivory;
@@ -196,7 +184,6 @@ p {
     margin-bottom: 1.5rem;
 }
 
-/* Wider, spaced rows */
 .guest-table {
     width: 100%;
     border-collapse: separate;
@@ -204,7 +191,7 @@ p {
     font-size: 1.1rem;
 }
 
-/* Table header */
+
 .guest-table th {
     text-align: left;
     padding: 1rem;
@@ -212,7 +199,7 @@ p {
     font-weight: 700;
 }
 
-/* Table cells */
+
 .guest-table td {
     padding: 1rem;
     background-color: #fffef4;
@@ -220,7 +207,6 @@ p {
     border-bottom: 2px solid #ddd;
 }
 
-/* Row box effect */
 .guest-table tr td:first-child {
     border-left: 2px solid #ddd;
 }
@@ -228,8 +214,6 @@ p {
 .guest-table tr td:last-child {
     border-right: 2px solid #ddd;
 }
-
-/* ---------- OPTIONAL QUALITY TOUCH ---------- */
 
 .add-guest-form,
 .guest-table-wrapper {
