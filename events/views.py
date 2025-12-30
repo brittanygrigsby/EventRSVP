@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseForbidden
-from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
 from .models import Event
 from .forms import EventForm
@@ -10,6 +9,9 @@ from django.conf import settings
 from rsvp.models import Guest
 from .forms import GuestInviteForm
 from rsvp.forms import RSVPForm
+from django.urls import reverse
+from django.core.mail import EmailMultiAlternatives
+
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -112,34 +114,67 @@ def event_guests(request, event_id):
                 guest = Guest(event=event, name=full_name, email=email)
                 guest.save()
 
+                # Event-specific link (optionally include code)
+                event_url = request.build_absolute_uri(
+                    reverse("events:event_detail", args=[event.id])
+                )
+                # Optional: auto-include the code in the URL
+                # event_url = f"{event_url}?code={guest.code}"
 
                 subject = f"You're invited to {event.name}!"
-                message = (
+
+                text_content = (
                     f"Hi {guest.name},\n\n"
-                    f"You've been invited to {event.name} on {event.date}.\n\n"
+                    f"You're invited to {event.name} on {event.date}.\n\n"
                     f"Your guest code is: {guest.code}\n\n"
-                    f"Use this code on the event page to RSVP.\n\n"
+                    f"RSVP here: {event_url}\n\n"
                     f"Thanks!"
                 )
 
-                send_mail(
-                    subject,
-                    message,
-                    settings.DEFAULT_FROM_EMAIL,
-                    [guest.email],
-                    fail_silently=False,
-                )
+                html_content = f"""
+                <p>Hi {guest.name},</p>
 
+                <p>You’re invited to <strong>{event.name}</strong> on {event.date}.</p>
+
+                <p><strong>Your guest code:</strong> {guest.code}</p>
+
+                <p>
+                  <a href="{event_url}" style="
+                    display:inline-block;
+                    padding:14px 22px;
+                    background:#e91e63;
+                    color:white;
+                    text-decoration:none;
+                    border-radius:8px;
+                    font-weight:600;
+                    font-size:16px;">
+                    YAY or NAY Event RSVP Website
+                  </a>
+                </p>
+
+                <p>We can’t wait to celebrate with you! 💕</p>
+                """
+
+                email_msg = EmailMultiAlternatives(
+                    subject=subject,
+                    body=text_content,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    to=[guest.email],
+                )
+                email_msg.attach_alternative(html_content, "text/html")
+                email_msg.send()
 
                 messages.success(request, f"Invite sent to {guest.email}.")
                 return redirect("events:event_guests", event_id=event.id)
 
-  
+        
+
     else:
         form = GuestInviteForm()
 
     guests = Guest.objects.filter(event=event).order_by("-id")
     return render(request, "events/event_guests.html", {"event": event, "guests": guests, "form": form})
+
 
 
 
