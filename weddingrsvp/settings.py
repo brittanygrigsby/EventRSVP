@@ -55,8 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'events',
     'rsvp',
-    "cloudinary",
-    "cloudinary_storage",
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -158,7 +158,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": env("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": env("CLOUDINARY_API_KEY"),
+    "API_SECRET": env("CLOUDINARY_API_SECRET"),
+}
 
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 #login and log out
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "events:host_dashboard"
@@ -184,12 +190,6 @@ DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": env("CLOUDINARY_CLOUD_NAME", default=""),
-    "API_KEY": env("CLOUDINARY_API_KEY", default=""),
-    "API_SECRET": env("CLOUDINARY_API_SECRET", default=""),
-}
 
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
